@@ -15,6 +15,7 @@
     <project.build.1>1</project.build.1>
     <project.build.2>2</project.build.2>
     <project.build.3>3</project.build.3>
+    <project.build.4>4</project.build.4>
   </properties>
 
   <dependencies>
