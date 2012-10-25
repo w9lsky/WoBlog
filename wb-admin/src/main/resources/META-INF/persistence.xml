@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <!--<persistence-unit name="transactions-oracle" transaction-type="RESOURCE_LOCAL">-->
+         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+         <!--&lt;!&ndash;<class>org.fxc.jpa.domain.UserInfo</class>&ndash;&gt;-->
+         <!--&lt;!&ndash;<class>org.fxc.jpa.domain.AccountInfo</class>&ndash;&gt;-->
+         <!--<properties>-->
+             <!--<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>-->
+             <!--<property name="hibernate.connection.url" value="jdbc:mysql://instance24733.db.xeround.com:16175/woblog"/>-->
+             <!--<property name="hibernate.connection.username" value="woblog"/>-->
+             <!--<property name="hibernate.connection.password" value="woblog"/>-->
+             <!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>-->
+             <!--<property name="hibernate.show_sql" value="true"/>-->
+             <!--<property name="hibernate.format_sql" value="true"/>-->
+             <!--<property name="hibernate.use_sql_comments" value="false"/>-->
+             <!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
+         <!--</properties>-->
+     <!--</persistence-unit>-->
+
+    <persistence-unit name="transactions-oracle">
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="hibernate.connection.username" value="scott"/>
+            <property name="hibernate.connection.password" value="tiger"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=yes)(ADDRESS=(PROTOCOL=TCP)(HOST=shimosracp1-vip.dev.aspentech.com)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=shimosracp2-vip.dev.aspentech.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=sunw)))"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
+</persistence>

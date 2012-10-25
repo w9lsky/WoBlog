@@ -1,0 +1,17 @@
+#main {
+    background: #bbece6 url(../../images/404bg.jpg) repeat-x;
+    font-size: 62.5%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #555;
+    position: relative;
+    height:100%;
+
+}
+
+#not-found {
+    width: 481px;
+    height: 648px;
+    margin: 0 auto 30px auto;
+    background: url(../../images/404.png) 0 -110px;
+    text-indent: -9999px;
+}

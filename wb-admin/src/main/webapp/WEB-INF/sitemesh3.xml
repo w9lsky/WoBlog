@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  <mapping name ="admin"  path="/wb_admin/*" decorator="/schemes/adminDecorator.jsp"/>
+  <mapping name ="website" path="/*" decorator="/schemes/websiteDecorator.jsp"/>
+</sitemesh> 
