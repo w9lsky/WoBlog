@@ -24,7 +24,7 @@
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="hibernate.connection.username" value="scott"/>
             <property name="hibernate.connection.password" value="tiger"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=yes)(ADDRESS=(PROTOCOL=TCP)(HOST=shimosracp1-vip.dev.aspentech.com)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=shimosracp2-vip.dev.aspentech.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=sunw)))"/>
+            <property name="hibernate.connection.url" value=""/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
