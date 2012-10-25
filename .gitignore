@@ -3,3 +3,7 @@
 .git
 .settings
 target/*
+*.iml
+*.ipr
+*.iws
+.svn
