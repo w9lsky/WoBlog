@@ -51,7 +51,7 @@
     </bean>
 
     <!-- Forwards requests to the "/" resource to the "welcome" view -->
-	<mvc:view-controller path="/" view-name="admin" />
+	<mvc:view-controller path="/" view-name="index" />
 
 	<!-- Configures Handler Interceptors -->
 	<mvc:interceptors>
