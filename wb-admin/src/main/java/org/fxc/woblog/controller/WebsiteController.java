@@ -2,7 +2,9 @@ package org.fxc.woblog.controller;
 
 import org.fxc.woblog.Constants;
 import org.fxc.woblog.domain.Post;
+import org.fxc.woblog.domain.PostTerm;
 import org.fxc.woblog.services.PostService;
+import org.fxc.woblog.services.PostTermService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class WebsiteController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private PostTermService postTermService;
     
     /**
      *
@@ -44,8 +49,8 @@ public class WebsiteController {
         // the value is from database or cache.
         boolean hasBefore = false;
 
-        if (pageId != null) {
-            Post post = postService.findPost(Long.parseLong(postId));
+        if (postId != null||pageId!=null) {
+            Post post = postService.findPost(Long.parseLong(postId==null?pageId:postId));
             if (post == null) {
                 modelAndView.setViewName("notFound");
             } else {
@@ -56,11 +61,11 @@ public class WebsiteController {
         }
 
         if (tagId != null || catId != null) {
-            Page<Post> postPage = postService.listPost(Long.parseLong(postId == null ? catId : postId), Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE);
+            Page<PostTerm> postPage = postTermService.listPostByTermId(Long.parseLong(tagId == null ? catId : tagId), Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE);
             if (postPage.getSize() == 0) {
                 modelAndView.setViewName("notFound");
             } else {
-                modelAndView.addObject("PostPage", postPage);
+                modelAndView.addObject("PostTermPage", postPage);
                 modelAndView.setViewName("multiShow");
             }
             return modelAndView;

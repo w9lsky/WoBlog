@@ -1,8 +1,9 @@
-/**   
- * PostService
- *  
- * @author 傅心�?
- * Date: 2012-5-22
+/**
+ * <p>PostService</p>
+ * Author: Leo Sun
+ * Blog: http://fuxinci.com/
+ * Date: 5/22/12
+ * Since: 0.1
  */
 package org.fxc.woblog.services;
 
@@ -71,14 +72,5 @@ public class PostService
     @Transactional
     public Page<Post> listPost(int pageSize, int pageIndex) {
         return postDao.findAll(new PageRequest(pageIndex, pageSize, null, Constants.ID));
-    }
-
-    @Transactional
-    public Page<Post> listPost(final Long tagId, int pageIndex, int pageSize) {
-        return postDao.findAll(new Specification<Post>() {
-            public Predicate toPredicate(Root<Post> postRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                return cb.equal(postRoot.get("postTerm.termId"), tagId);
-            }
-        }, new PageRequest(pageIndex, pageSize, null, Constants.ID));
     }
 }

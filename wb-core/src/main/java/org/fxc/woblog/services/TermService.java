@@ -1,8 +1,9 @@
 /**
- * CategoryService
- *
- * @author fuxinci.com
- * Date: July 19, 2012
+ * <p>TermService</p>
+ * Author: Leo Sun
+ * Blog: http://fuxinci.com/
+ * Date: 06/19/12
+ * Since: 0.1
  */
 package org.fxc.woblog.services;
 

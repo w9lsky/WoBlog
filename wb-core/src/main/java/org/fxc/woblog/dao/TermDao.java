@@ -1,8 +1,9 @@
 /**
- * Term
- *
- * @author fuxinci.com
- * Date: May 21, 2012
+ * <p>TermDao</p>
+ * Author: Leo Sun
+ * Blog: http://fuxinci.com/
+ * Date: 5/21/12
+ * Since: 0.1
  */
 package org.fxc.woblog.dao;
 

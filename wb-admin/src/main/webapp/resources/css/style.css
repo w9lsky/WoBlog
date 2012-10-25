@@ -12,7 +12,7 @@ a {
     color: #21759B;
 }
 
-div {
+body>div>div {
     border: 1px dashed #FF0000;
 }
 
