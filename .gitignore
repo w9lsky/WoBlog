@@ -7,5 +7,3 @@ target
 *.ipr
 *.iws
 .svn
-database.properties
-persistence.xml
