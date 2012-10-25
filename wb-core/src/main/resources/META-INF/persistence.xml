@@ -6,8 +6,8 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="hibernate.connection.username" value="scott"/>
-            <property name="hibernate.connection.password" value="tiger"/>
+            <property name="hibernate.connection.username" value="USER_NAME"/>
+            <property name="hibernate.connection.password" value="PASSWORD"/>
             <property name="hibernate.connection.url" value="YOUR_DATABASE_URL"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
