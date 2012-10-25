@@ -7,7 +7,7 @@
 <p>应用技术: JPA for Hibernate,Spring MVC,siteMach3,Jquery 1.7..</p>
 
 <p>页面构成：</p>
-       <p> 后台：
+       <p> 后台：</p>
 			<p>文章							--已实现</p>
 			<p>分类目录						--已实现</p>
 			<p>标签							--已实现</p>
