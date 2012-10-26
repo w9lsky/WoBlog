@@ -17,6 +17,7 @@
     <title><sitemesh:write property='title'/></title>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.json.js"></script>
+    <script type="text/javascript" src="js/decorator/menu.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <sitemesh:write property='head'/>
 </head>
@@ -25,6 +26,20 @@
     <div id="top_div">
          <a
 			href="wb_admin/admin">跳转到后台</a>
+    </div>
+    <div id="menu_div">
+            <ul>
+                <li></li>
+                <li><a href="">首页</a>
+                <li><a href="?cat=301">技术相关</a>
+                    <ul>
+                        <li><a href="?cat=440">Java</a></li>
+                        <li><a href="?cat=441">JavaScript</a></li>
+                    </ul>
+                </li>
+                <li><a href="?tag=418">生活杂谈</a></li>
+                <li><a href="">作者</a></li>
+            </ul>
     </div>
     <div id="left_div">left</div>
     <div id="center_div"><sitemesh:write property='body'/></div>

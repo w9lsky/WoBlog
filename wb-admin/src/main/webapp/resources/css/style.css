@@ -7,45 +7,60 @@ body {
     margin: 0 auto;
 }
 
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 a {
     text-decoration: none;
     color: #21759B;
 }
 
 body>div>div {
-    border: 1px dashed #FF0000;
+    border: 1px solid #FF0000;
 }
 
 #main_div {
-    width: 1206px;
+    width: 1210px;
     overflow: hidden;
-    margin:0 auto;
+    margin: 0 auto;
+    /*position: relative;*/
 }
 
 #top_div {
-    width: 100%;
+    width: 1204px;
     height: 100px;
+}
+
+#menu_div {
+    width: 1204px;
+    height: 50px;
+    z-index: 999;
+    /*position: absolute;*/
 }
 
 #left_div {
     width: 100px;
+    /*margin-top: 50px;*/
     float: left;
-    float: left;
-    width: 100px;
 }
 
 #center_div {
+    /*margin-top: 50px;*/
     width: 900px;
     float: left;
 }
 
 #right_div {
+    /*margin-top: 50px;*/
     width: 200px;
-    float: right;
+    float: left;
 }
 
 #foot_div {
-    width: 100%;
+    width: 1204px;
     height: 50px;
     clear: both;
     overflow: hidden;
@@ -54,4 +69,36 @@ body>div>div {
 #left_div, #right_div {
     padding-bottom: 100000px;
     margin-bottom: -100000px;
+}
+
+
+/*only for test*/
+#menu_div li{
+    line-height: 30px;
+    background: #F7F7F7;
+}
+#menu_div ul {
+    margin-top: 0;
+    text-align: left;
+    background: #F7F7F7;
+    height: 50px;
+}
+
+#menu_div>ul>li {
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    margin: 10px auto;
+}
+
+#menu_div>ul>li ul {
+    display: none;
+    width: 100px;
+    position: absolute;
+    margin-left: 0;
+}
+
+#menu_div>ul>li>ul li {
+    text-align: center;
+    position: relative;
 }

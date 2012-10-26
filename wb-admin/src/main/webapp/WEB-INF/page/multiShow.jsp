@@ -12,18 +12,29 @@
 <body>
 <c:forEach var="obj" items="${PostTermPage.content}">
     <c:set var="post" value="${obj.post}"/>
-    <c:set var="term" value="${obj.term}"/>
-
     <div>
         <p><strong>${post.title}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.modifiedDate}</p>
 
-        <div style="padding: 20px;text-align: left;">
+        <div style="line-height:10px;padding: 20px;text-align: left;height: 200px;overflow: hidden;">
                 ${post.content}
         </div>
 
+        <c:forEach var="postTerms" items="${post.postTerms}">
+            <c:set var="term" value="${postTerms.term}"/>
+            <c:if test="${term.taxonomy=='TAG'}">
+                <label><a href="">${term.name}</a></label>
+            </c:if>
+        </c:forEach>
+
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <a href="?post=${post.id}">详细</a>
+        <label>评论${post.commentCount}</label>
     </div>
     <hr style="width:100%;">
 </c:forEach>
-
+<c:forEach var="index" begin="1" end="${PostTermPage.totalPages}">
+    <label><a href="?${RequestUrl}&pageIndex=${index}">${index}</a></label>
+</c:forEach>
 </body>
 </html>

@@ -44,7 +44,8 @@ public class WebsiteController {
                                 @RequestParam(value = "cat",required=false) String catId,
                                 @RequestParam(value = "tag",required=false) String tagId,
                                 @RequestParam(value = "post",required=false) String postId,
-                                @RequestParam(value = "page",required=false) String pageId)
+                                @RequestParam(value = "page",required=false) String pageId,
+                                @RequestParam(value = "pageIndex",required=false,defaultValue = "1")Long pageIndex)
     {
         // the value is from database or cache.
         boolean hasBefore = false;
@@ -61,10 +62,21 @@ public class WebsiteController {
         }
 
         if (tagId != null || catId != null) {
-            Page<PostTerm> postPage = postTermService.listPostByTermId(Long.parseLong(tagId == null ? catId : tagId), Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE);
-            if (postPage.getSize() == 0) {
+            Long searchId;
+            String url;
+            if (tagId != null) {
+                searchId = Long.parseLong(tagId);
+                url = "tag=" + tagId;
+            } else {
+                searchId = Long.parseLong(catId);
+                url = "cat=" + catId;
+            }
+            Page<PostTerm> postPage = postTermService.listPostByTermId(searchId, pageIndex.intValue() == 0 ? 0 : pageIndex.intValue() - 1, 5);
+            if (postPage.getTotalElements() == 0) {
                 modelAndView.setViewName("notFound");
             } else {
+                modelAndView.addObject("TermName",((PostTerm)(postPage.getContent().get(0))).getTerm().getName());
+                modelAndView.addObject("RequestUrl", url);
                 modelAndView.addObject("PostTermPage", postPage);
                 modelAndView.setViewName("multiShow");
             }
