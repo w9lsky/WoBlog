@@ -13,6 +13,9 @@
         <div class=col_left>
             <p>
                 <form:hidden path="id"/>
+                <form:hidden path="createDate"/>
+                <form:hidden path="postType"/>
+                <form:hidden path="commentCount"/>
                 <form:input path="title" cssClass="post_title"/>
                 <span style="color:red;"><form:errors path="title"/></span>
             </p>

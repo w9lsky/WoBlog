@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <html>
 <head>
@@ -37,7 +37,7 @@
                         <li><a href="?cat=441">JavaScript</a></li>
                     </ul>
                 </li>
-                <li><a href="?tag=418">生活杂谈</a></li>
+                <li><a href="?cat=418">生活杂谈</a></li>
                 <li><a href="">作者</a></li>
             </ul>
     </div>

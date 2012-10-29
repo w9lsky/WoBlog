@@ -10,10 +10,12 @@
 <html>
 <head><title>Simple jsp page</title></head>
 <body>
-<c:forEach var="obj" items="${PostTermPage.content}">
-    <c:set var="post" value="${obj.post}"/>
+<c:forEach var="post" items="${PostPage.content}">
     <div>
-        <p><strong>${post.title}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.modifiedDate}</p>
+        <c:if test="${TermName!=null}">
+            <p style="text-align:left;">分类归档：${TermName}</p>
+        </c:if>
+        <p><a href="?post=${post.id}">${post.title}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.modifiedDate}</p>
 
         <div style="line-height:10px;padding: 20px;text-align: left;height: 200px;overflow: hidden;">
                 ${post.content}
@@ -22,7 +24,7 @@
         <c:forEach var="postTerms" items="${post.postTerms}">
             <c:set var="term" value="${postTerms.term}"/>
             <c:if test="${term.taxonomy=='TAG'}">
-                <label><a href="">${term.name}</a></label>
+                <label><a href="?tag=${term.id}">${term.name}</a></label>
             </c:if>
         </c:forEach>
 
@@ -33,8 +35,23 @@
     </div>
     <hr style="width:100%;">
 </c:forEach>
-<c:forEach var="index" begin="1" end="${PostTermPage.totalPages}">
-    <label><a href="?${RequestUrl}&pageIndex=${index}">${index}</a></label>
-</c:forEach>
+
+<c:forEach var="index" begin="1" end="${PostPage.totalPages}">
+    <c:if test="${PostPage.number+1==index}">
+        <label style="border: 1px solid #FF0000;">
+     </c:if>
+    <c:if test="${PostPage.number+1!=index}">
+        <label>
+    </c:if>
+    <c:if test="${RequestUrl==null}">
+            <a style="text-decoration:blink;" href="?pageIndex=${index}">${index}</a>
+        </label>
+    </c:if>
+    <c:if test="${RequestUrl!=null}">
+        <label>
+            <a style="text-decoration:blink;" href="?${RequestUrl}&pageIndex=${index}">${index}</a>
+        </label>
+    </c:if>
+    </c:forEach>
 </body>
 </html>

@@ -18,6 +18,7 @@ public interface Constants {
 
     // column name
     String ID = "id";
+    String CREATE_DATE = "createDate";
     String TAXONOMY = "taxonomy";
 
     // for request or session

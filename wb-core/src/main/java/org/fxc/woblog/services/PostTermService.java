@@ -27,11 +27,15 @@ public class PostTermService {
     @Autowired
     private PostTermDao postTermDao;
 
-    public Page<PostTerm> listPostByTermId(final Long termId,int pageSize,int pageIndex){
-        return postTermDao.findAll(new Specification<PostTerm>(){
-            public Predicate toPredicate(Root<PostTerm> postTermRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                return cb.equal(postTermRoot.get("termId"),termId);
-            }
-        },new PageRequest(pageSize,pageIndex,null, Constants.ID));
+    public Page<PostTerm> listPostByTermId(final Long termId, int pageSize, int pageIndex) {
+        if (termId != null) {
+            return postTermDao.findAll(new Specification<PostTerm>() {
+                public Predicate toPredicate(Root<PostTerm> postTermRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                    return cb.equal(postTermRoot.get("termId"), termId);
+                }
+            }, new PageRequest(pageSize, pageIndex, null, Constants.ID));
+        } else {
+            return postTermDao.findAll(new PageRequest(pageSize, pageIndex, null, Constants.ID));
+        }
     }
 }

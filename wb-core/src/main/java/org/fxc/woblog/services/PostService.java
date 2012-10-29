@@ -17,14 +17,12 @@ import org.fxc.woblog.domain.enmu.Taxonomy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.Date;
 import java.util.List;
 
@@ -70,7 +68,25 @@ public class PostService
     }
 
     @Transactional
-    public Page<Post> listPost(int pageSize, int pageIndex) {
+    public Page<Post> listPost(int pageIndex,int pageSize) {
         return postDao.findAll(new PageRequest(pageIndex, pageSize, null, Constants.ID));
+    }
+
+    public Post findNext(final Post post) {
+        List<Post> postList = postDao.findAll(new Specification<Post>() {
+            public Predicate toPredicate(Root<Post> postRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return cb.greaterThan(postRoot.<Date>get("createDate"), post.getCreateDate());
+            }
+        }, new Sort(Sort.Direction.ASC, "createDate"));
+        return postList.size()==0 ? null:postList.get(0);
+    }
+
+    public Post findPrevious(final Post post) {
+        List<Post> postList = postDao.findAll(new Specification<Post>() {
+            public Predicate toPredicate(Root<Post> postRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return cb.lessThan(postRoot.<Date>get("createDate"), post.getCreateDate());
+            }
+        }, new Sort(Sort.Direction.DESC, "createDate"));
+        return postList.size()==0 ? null:postList.get(0);
     }
 }

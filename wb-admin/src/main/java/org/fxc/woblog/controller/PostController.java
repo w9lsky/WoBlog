@@ -47,7 +47,7 @@ public class PostController extends AdminBaseCotroller
     @RequestMapping(value = "listPost", method = RequestMethod.GET)
     public ModelAndView listPost(ModelAndView modelAndView)
     {
-        Page<Post> postPage = postService.listPost(Constants.DEFAULT_PAGE_SIZE, Constants.DEFAULT_PAGE_INDEX);
+        Page<Post> postPage = postService.listPost(Constants.DEFAULT_PAGE_INDEX,Constants.DEFAULT_PAGE_SIZE);
         
         modelAndView.addObject(POST_PAGE,postPage);
         modelAndView.setViewName(Constants.VIEW_LIST_POST);
