@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 body {
-    font-family: sans-serif;
-    font-size: 12px;
-    line-height: 1.4em;
+    font-family:arial, 宋体, sans-serif;
+    font-size:14px;
+    line-height:24px;
     text-align: center;
     margin: 0 auto;
 }
@@ -76,6 +76,7 @@ body>div>div {
 #menu_div li{
     line-height: 30px;
     background: #F7F7F7;
+    text-align: center;
 }
 #menu_div ul {
     margin-top: 0;
@@ -85,7 +86,6 @@ body>div>div {
 }
 
 #menu_div>ul>li {
-    text-align: center;
     display: inline-block;
     width: 100px;
     margin: 10px auto;
@@ -99,6 +99,5 @@ body>div>div {
 }
 
 #menu_div>ul>li>ul li {
-    text-align: center;
     position: relative;
 }

@@ -13,7 +13,9 @@
         <div class=col_left>
             <p>
                 <form:hidden path="id"/>
+                <c:if test="${createDate!=null}">
                 <form:hidden path="createDate"/>
+                </c:if>
                 <form:hidden path="postType"/>
                 <form:hidden path="commentCount"/>
                 <form:input path="title" cssClass="post_title"/>
@@ -21,6 +23,8 @@
             </p>
 
             <p>
+
+                <form:hidden path="excerpt"/>
                 <form:textarea path="content" cssClass="post_content"/>
                 <span style="color:red;"><form:errors path="content"/></span>
             </p>
@@ -79,6 +83,7 @@
         </div>
     </form:form>
 </div>
+<script type="text/javascript" src="js/cutter/cutter.developer.js"></script>
 <script type="text/javascript" src="js/editPost.js"></script>
 <script type="text/javascript" src="js/kindeditor/kindeditor.js"></script>
 <link rel="stylesheet" href="css/admin/post.css">

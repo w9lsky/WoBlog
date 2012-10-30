@@ -17,8 +17,9 @@
         </c:if>
         <p><a href="?post=${post.id}">${post.title}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.modifiedDate}</p>
 
-        <div style="line-height:10px;padding: 20px;text-align: left;height: 200px;overflow: hidden;">
-                ${post.content}
+        <%--<div style="padding: 20px;text-align: left;line-height:14px;height: 200px;overflow: hidden;">--%>
+        <div style="padding: 20px;text-align: left;overflow: hidden;">
+                ${post.excerpt}
         </div>
 
         <c:forEach var="postTerms" items="${post.postTerms}">

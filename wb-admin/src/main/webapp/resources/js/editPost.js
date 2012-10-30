@@ -1,8 +1,19 @@
 $(document).ready(function() {
     // KindEditor initialization
     KindEditor.ready(function(K) {
-        K.create('#content');
+        var editor = K.create('#content',{
+            afterBlur:function(){
+
+                Cutter.run(document.getElementById('content'), document.getElementById('excerpt'), 10);
+//                if (editor.text().length > 500) {
+//                    $('#excerpt').val(editor.text().substring(0, 500));
+//                } else {
+//                    $('#excerpt').val(editor.text());
+//                }
+            }
+        });
     });
+
 
     //wbox initialization
     $('.postbox').each(function() {

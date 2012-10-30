@@ -44,6 +44,7 @@ public class Post extends BaseModel
     /**
      * 摘录
      */
+    @Column(columnDefinition="CLOB")
     private String excerpt;
     /**
      * 文章状态（publish/auto-draft/inherit等）
