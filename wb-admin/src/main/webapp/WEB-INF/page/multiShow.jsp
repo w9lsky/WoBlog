@@ -11,48 +11,53 @@
 <head><title>Simple jsp page</title></head>
 <body>
 <c:forEach var="post" items="${PostPage.content}">
-    <div>
+    <div class="post_list_div">
         <c:if test="${TermName!=null}">
             <p style="text-align:left;">分类归档：${TermName}</p>
         </c:if>
-        <p><a href="?post=${post.id}">${post.title}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.modifiedDate}</p>
+        <h2 class="title_h2"><a href="?post=${post.id}">${post.title}</a></h2>
 
-        <%--<div style="padding: 20px;text-align: left;line-height:14px;height: 200px;overflow: hidden;">--%>
-        <div style="padding: 20px;text-align: left;overflow: hidden;">
+        <p class="create_data_p">发表于<a href="javascript:(0)"><fmt:formatDate value="${post.createDate}" type="date"
+                                                                             dateStyle="full"/></a></p>
+
+        <div class="excerpt_div">
                 ${post.excerpt}
+                    <p><a href="?post=${post.id}" class="more_a">阅读全文>></a></p>
         </div>
 
-        <c:forEach var="postTerms" items="${post.postTerms}">
-            <c:set var="term" value="${postTerms.term}"/>
-            <c:if test="${term.taxonomy=='TAG'}">
-                <label><a href="?tag=${term.id}">${term.name}</a></label>
-            </c:if>
-        </c:forEach>
+        <div class="post_foot_div">
+            <span class="tag_span"> 标签为
+            <c:forEach var="postTerms" items="${post.postTerms}">
+                <c:set var="term" value="${postTerms.term}"/>
+                <c:if test="${term.taxonomy=='TAG'}">
+                    <label><a href="?tag=${term.id}">${term.name}</a></label>
+                </c:if>
+            </c:forEach>
 
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-        <a href="?post=${post.id}">详细</a>
-        <label>评论${post.commentCount}</label>
+            </span>
+            <label class="comment_count_lbl">评论${post.commentCount}</label>
+        </div>
     </div>
-    <hr style="width:100%;">
+    <hr class="excerpt_hr">
 </c:forEach>
-
-<c:forEach var="index" begin="1" end="${PostPage.totalPages}">
-    <c:if test="${PostPage.number+1==index}">
-        <label style="border: 1px solid #FF0000;">
-     </c:if>
-    <c:if test="${PostPage.number+1!=index}">
-        <label>
-    </c:if>
-    <c:if test="${RequestUrl==null}">
+<div class="page_div">
+    <c:forEach var="index" begin="1" end="${PostPage.totalPages}">
+        <c:if test="${PostPage.number+1==index}">
+            <label style="border: 1px solid #FF0000;">
+        </c:if>
+        <c:if test="${PostPage.number+1!=index}">
+            <label>
+        </c:if>
+        <c:if test="${RequestUrl==null}">
             <a style="text-decoration:blink;" href="?pageIndex=${index}">${index}</a>
-        </label>
-    </c:if>
-    <c:if test="${RequestUrl!=null}">
-        <label>
+            </label>
+        </c:if>
+        <c:if test="${RequestUrl!=null}">
+            <label>
             <a style="text-decoration:blink;" href="?${RequestUrl}&pageIndex=${index}">${index}</a>
-        </label>
-    </c:if>
+            </label>
+        </c:if>
     </c:forEach>
+</div>
 </body>
 </html>

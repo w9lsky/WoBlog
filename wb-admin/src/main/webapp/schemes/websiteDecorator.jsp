@@ -24,8 +24,9 @@
 <body>
 <div id="main_div">
     <div id="top_div">
-         <a
-			href="wb_admin/admin">跳转到后台</a>
+        <h1>赋新词</h1>
+        <p>一个技术宅的私人领地 欢迎骚扰^^</p>
+        <a href="wb_admin/admin">跳转到后台</a>
     </div>
     <div id="menu_div">
             <ul>
@@ -41,10 +42,16 @@
                 <li><a href="">作者</a></li>
             </ul>
     </div>
-    <div id="left_div">left</div>
+    <%--<div id="left_div">left</div>--%>
     <div id="center_div"><sitemesh:write property='body'/></div>
-    <div id="right_div">right</div>
-    <div id="foot_div">foot</div>
+    <div id="right_div">
+        <h6>标签</h6>
+        <h6>近期文章</h6>
+        <h6>近期评论</h6>
+    </div>
+    <div id="foot_div">
+        
+    </div>
 </div>
 </body>
 </html>

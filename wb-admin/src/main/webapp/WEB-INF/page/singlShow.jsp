@@ -12,31 +12,50 @@
     <title>Simple jsp page</title>
 </head>
 <body>
+<div class="post_div">
     <c:set var="obj" value="${Post}"/>
-    <p><strong>${obj.title}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${obj.modifiedDate}</p>
-    <p>标签：
+    <h1>${obj.title}</h1>
+
+    <p class="tag_p">
         <c:forEach var="pt" items="${obj.postTerms}">
-                <c:if test="${pt.term.taxonomy=='TAG'}">
-                    <c:out value="${pt.term.name}"/>
-                </c:if>
+            <c:if test="${pt.term.taxonomy=='TAG'}">
+                <a href="?tag=${pt.term.id}">${pt.term.name}</a>
+            </c:if>
         </c:forEach>
     </p>
-    <div style="padding: 20px;text-align: left;">
+
+    <div class="content_div">
         ${obj.content}
-            <p>
-                <c:if test="${PreviousPost!=null}">
-                    <a href="?post=${PreviousPost.id}">上一篇:${PreviousPost.title}</a>
-                </c:if>
-                <c:if test="${PreviousPost==null}">
-                    上一篇:没有了
-                </c:if>
-                <c:if test="${NextPost!=null}">
-                    <a href="?post=${NextPost.id}">下一篇:${NextPost.title}</a>
-                </c:if>
-                <c:if test="${NextPost==null}">
-                    下一篇:没有了
-                </c:if>
-            </p>
     </div>
+    <div class="page_div">
+        <div class="pre_post_div">上一篇:
+        <c:if test="${PreviousPost!=null}">
+            <a href="?post=${PreviousPost.id}">${PreviousPost.title}</a>
+        </c:if>
+        <c:if test="${PreviousPost==null}">
+            没有了
+        </c:if>
+        </div>
+        <div class="next_post_div">下一篇:
+        <c:if test="${NextPost!=null}">
+            <a href="?post=${NextPost.id}">${NextPost.title}</a>
+        </c:if>
+        <c:if test="${NextPost==null}">
+            没有了
+        </c:if>
+        </div>
+    </div>
+
+    <div class="foot_div">
+        <span><fmt:formatDate value="${obj.createDate}" type="date" dateStyle="full"/></span> |
+        <span>评论:${obj.commentCount}</span>|
+        <span>分类:<c:forEach var="pt" items="${obj.postTerms}">
+            <c:if test="${pt.term.taxonomy=='CATEGORY'}">
+                <a href="?/category=${pt.term.id}">${pt.term.name}</a>
+            </c:if>
+        </c:forEach>
+        </span>
+    </div>
+</div>
 </body>
 </html>

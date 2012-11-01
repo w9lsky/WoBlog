@@ -83,7 +83,6 @@
         </div>
     </form:form>
 </div>
-<script type="text/javascript" src="js/cutter/cutter.developer.js"></script>
 <script type="text/javascript" src="js/editPost.js"></script>
 <script type="text/javascript" src="js/kindeditor/kindeditor.js"></script>
 <link rel="stylesheet" href="css/admin/post.css">

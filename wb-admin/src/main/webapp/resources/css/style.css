@@ -1,10 +1,11 @@
 @CHARSET "UTF-8";
 body {
-    font-family:arial, 宋体, sans-serif;
+    font-family:arial,宋体,sans-serif;
     font-size:14px;
     line-height:24px;
     text-align: center;
     margin: 0 auto;
+    background: url(../images/bg_image.gif) left repeat;
 }
 
 ul, ol, li {
@@ -19,76 +20,163 @@ a {
 }
 
 body>div>div {
-    border: 1px solid #FF0000;
+    /*border: 1px solid #FF0000;*/
 }
 
 #main_div {
-    width: 1210px;
+    width: 990px;
     overflow: hidden;
     margin: 0 auto;
-    /*position: relative;*/
 }
 
 #top_div {
-    width: 1204px;
-    height: 100px;
+    width: 990px;
+    height: 150px;
+    background: url(../images/top_bar.jpg) left no-repeat;
 }
 
 #menu_div {
-    width: 1204px;
+    width: 990px;
     height: 50px;
     z-index: 999;
-    /*position: absolute;*/
 }
 
 #left_div {
     width: 100px;
-    /*margin-top: 50px;*/
     float: left;
 }
 
 #center_div {
-    /*margin-top: 50px;*/
-    width: 900px;
+    width: 680px;
     float: left;
 }
 
+.post_list_div .title_h2 {
+    text-align: left;
+    margin: 0 50px;
+    margin-top: 20px;
+}
+
+.post_list_div .create_data_p {
+    text-align: left;
+    margin: 0 100px;
+}
+.post_list_div .excerpt_div{
+    padding: 20px 40px;
+    text-align: left;
+}
+.post_list_div .excerpt_hr{
+   margin: 0 40px;
+}
+.post_list_div .excerpt_div .more_a{
+    font-weight: bolder;
+    color: #0000ff;
+}
+.post_list_div .post_foot_div{
+    width: 100%;
+    text-align: left;
+    font-weight: bolder;
+}
+.post_list_div .tag_span{
+    margin-left: 80px;
+}
+.post_list_div .comment_count_lbl{
+    float: right;
+    margin-right: 80px;
+}
+
+.page_div{
+    margin-right: 80px;
+    text-align: right;
+}
+
+.post_div .tag_p a {
+    margin: 0 5px 5px 0;
+    padding: 0px 10px;
+    background-color: #AAB5C3;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    color: white;
+}
+.post_div .tag_p a:hover{
+    background-color: #f87b00;
+}
+
+.post_div .content_div{
+    padding: 0 40px;
+    text-align: left;
+
+}
+.post_div .page_div{
+    width: 100%;
+    margin: 10px 0;
+    overflow:hidden;
+}
+.post_div .pre_post_div {
+    float: left;
+    margin-left: 40px;
+    margin-top: 0;
+}
+
+.post_div .next_post_div {
+    float: right;
+    margin-top: 0;
+    margin-right: 40px;
+
+}
+.post_div .foot_div{
+    margin: 10px 0;
+}
+.post_div .foot_div span{
+    margin: 0 10px;
+}
 #right_div {
-    /*margin-top: 50px;*/
-    width: 200px;
+    width: 270px;
     float: left;
 }
 
 #foot_div {
-    width: 1204px;
+    width: 990px;
     height: 50px;
     clear: both;
     overflow: hidden;
 }
 
-#left_div, #right_div {
-    padding-bottom: 100000px;
-    margin-bottom: -100000px;
-}
+/*#left_div, #right_div {*/
+    /*padding-bottom: 100000px;*/
+    /*margin-bottom: -100000px;*/
+/*}*/
 
 
 /*only for test*/
-#menu_div li{
-    line-height: 30px;
-    background: #F7F7F7;
-    text-align: center;
+#menu_div a{
+    color: #FFFFFF;
+    font-weight: bolder;
+    line-height: 50px;
+    padding: 10px;
 }
 #menu_div ul {
     margin-top: 0;
     text-align: left;
-    background: #F7F7F7;
+    background: #5690D2;
     height: 50px;
+}
+#menu_div li{
+    margin: 0px;
+    line-height: 50px;
+    background: #5690D2;
+    text-align: center;
+}
+
+#menu_div li:hover{
+    background: #CCCCCC;
 }
 
 #menu_div>ul>li {
     display: inline-block;
     width: 100px;
-    margin: 10px auto;
 }
 
 #menu_div>ul>li ul {
@@ -100,4 +188,30 @@ body>div>div {
 
 #menu_div>ul>li>ul li {
     position: relative;
+}
+
+#top_div h1{
+    position: absolute;
+    margin: 20px 180px;
+    font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
+#top_div p{
+    position: absolute;
+    margin: 50px 200px;
+}
+#main_div {
+    background-color: #FFFFFF;
+}
+#center_div {
+    background-color: #FFFFFF;
+}
+
+#left_div, #right_div {
+    background-color: #FFFFFF;
+    margin: 10px;
+    width: 230px;
+}
+
+#foot_div {
+    border-top: 3px solid #000000;
 }
