@@ -19,7 +19,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="wb_terms")
+@Table(name="wb_term")
 public class Term extends BaseModel
 {
 

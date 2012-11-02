@@ -132,6 +132,22 @@ body>div>div {
 .post_div .foot_div span{
     margin: 0 10px;
 }
+.comment_div{
+    text-align: left;
+    padding-left: 40px;
+}
+.comment_div .required_flag{
+    color: red;
+}
+.comment_div .error_message{
+    color: red;
+}
+.comment_div #content{
+    width:500px;
+    height:100px;
+    resize: none;
+}
+
 #right_div {
     width: 270px;
     float: left;

@@ -14,6 +14,7 @@
 <body>
 <div class="post_div">
     <c:set var="obj" value="${Post}"/>
+    <input type="hidden" id="post_id" value="${obj.id}">
     <h1>${obj.title}</h1>
 
     <p class="tag_p">
@@ -56,6 +57,20 @@
         </c:forEach>
         </span>
     </div>
+    <div class="comment_div">
+        <hr>
+        <form id="comment_form" method="post">
+            <p>姓名：<input type="text" id="name" name="name"><span class="required_flag">*</span><span id="name_error" class="error_message"></span></p>
+            <p>邮箱：<input type="text" id="mail" name="mail"><span class="required_flag">*</span><span id="mail_error" class="error_message"></span></p>
+            <p>网址：<input type="text" id="url" name="url"><span id="url_error" class="error_message"></span></p>
+            <span id="content_error" class="error_message"></span>
+            <p><textarea id="content" name="content" wrap="virtual"></textarea></p>
+            <p>
+                <button type="reset">重置</button>
+                <input type="button" id="submit_comment"value="提交"/></p>
+        </form>
+    </div>
 </div>
+<script type="text/javascript" src="js/singlShow.js"></script>
 </body>
 </html>

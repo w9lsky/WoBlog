@@ -31,7 +31,9 @@ public class PostTermService {
         if (termId != null) {
             return postTermDao.findAll(new Specification<PostTerm>() {
                 public Predicate toPredicate(Root<PostTerm> postTermRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                    if(cb!=null&&postTermRoot!=null)
                     return cb.equal(postTermRoot.get("termId"), termId);
+                    return null;
                 }
             }, new PageRequest(pageSize, pageIndex, null, Constants.ID));
         } else {

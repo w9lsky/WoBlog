@@ -27,8 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class PostService
-{
+public class PostService {
     @Autowired
     private PostDao postDao;
 
@@ -36,16 +35,14 @@ public class PostService
     private TermDao termDao;
 
     @Transactional
-    public Post save(Post post)
-    {
-        if(post.getId()== Constants.INVALID_ID){
+    public Post save(Post post) {
+        if (post.getId() == Constants.INVALID_ID) {
             post.setCreateDate(new Date());
         }
         post.setModifiedDate(new Date());
 
-        if(!post.getPostTerms().isEmpty()){
-            for(PostTerm postTerm:post.getPostTerms())
-            {
+        if (!post.getPostTerms().isEmpty()) {
+            for (PostTerm postTerm : post.getPostTerms()) {
                 if (postTerm.getTermName() != null && postTerm.getTermId() == null) {
                     Term term = termDao.save(new Term(postTerm.getTermName()));
                     postTerm.setTermId(term.getId());
@@ -68,25 +65,29 @@ public class PostService
     }
 
     @Transactional
-    public Page<Post> listPost(int pageIndex,int pageSize) {
+    public Page<Post> listPost(int pageIndex, int pageSize) {
         return postDao.findAll(new PageRequest(pageIndex, pageSize, null, Constants.ID));
     }
 
     public Post findNext(final Post post) {
+        if (post == null)
+            return null;
         List<Post> postList = postDao.findAll(new Specification<Post>() {
             public Predicate toPredicate(Root<Post> postRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.greaterThan(postRoot.<Date>get("createDate"), post.getCreateDate());
             }
         }, new Sort(Sort.Direction.ASC, "createDate"));
-        return postList.size()==0 ? null:postList.get(0);
+        return postList.size() == 0 ? null : postList.get(0);
     }
 
     public Post findPrevious(final Post post) {
+        if (post == null)
+            return null;
         List<Post> postList = postDao.findAll(new Specification<Post>() {
             public Predicate toPredicate(Root<Post> postRoot, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.lessThan(postRoot.<Date>get("createDate"), post.getCreateDate());
             }
         }, new Sort(Sort.Direction.DESC, "createDate"));
-        return postList.size()==0 ? null:postList.get(0);
+        return postList.size() == 0 ? null : postList.get(0);
     }
 }

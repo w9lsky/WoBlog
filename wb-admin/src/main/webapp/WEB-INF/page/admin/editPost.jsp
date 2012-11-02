@@ -23,7 +23,6 @@
             </p>
 
             <p>
-
                 <form:hidden path="excerpt"/>
                 <form:textarea path="content" cssClass="post_content"/>
                 <span style="color:red;"><form:errors path="content"/></span>

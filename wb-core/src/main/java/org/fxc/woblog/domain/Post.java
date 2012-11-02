@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
-@Table(name="wb_posts")
+@Table(name="wb_post")
 public class Post extends BaseModel
 {
     /**
@@ -100,6 +100,10 @@ public class Post extends BaseModel
     @JoinColumn(name = "postId")
     private Set<PostTerm> postTerms = new HashSet<PostTerm>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "postId")
+    private Set<PostComment> postComments = new HashSet<PostComment>();
+
     public void addPostTerm(PostTerm postTerm){
         postTerms.add(postTerm);
     }
@@ -111,25 +115,14 @@ public class Post extends BaseModel
     public void setPostTerms(Set<PostTerm> postTerms) {
         this.postTerms = postTerms;
     }
-    //    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "wb_PostTerm",
-//            inverseJoinColumns = {@JoinColumn(name = "termId")},
-//            joinColumns = {@JoinColumn(name = "postId")}
-//    )
-//    private Set<Term> termSet = new HashSet<Term>() ;
-//
-//    public void addTerm(Term term) {
-//        termSet.add(term);
-//    }
-//
-//    public Set<Term> getTermSet() {
-//        return termSet;
-//    }
-//
-//    public void setTermSet(Set<Term> termSet) {
-//        this.termSet = termSet;
-//    }
+
+    public Set<PostComment> getPostComments() {
+        return postComments;
+    }
+
+    public void setPostComments(Set<PostComment> postComments) {
+        this.postComments = postComments;
+    }
 
     public String getAuthor() {
         return author;
