@@ -1,0 +1,24 @@
+.status_p a {
+    padding: 0 5px;
+    font-weight: bolder;
+}
+
+.all_a:link,.all_a:visited {
+    color: #000000;
+}
+
+.reject_a:link,.reject_a:visited {
+    color: #eb8f00;
+}
+
+.approved_a:link,.approved_a:visited {
+    color: #66cc00;
+}
+
+.spam_a:link,.spam_a:visited {
+    color: #bbece6;
+}
+
+.recycle_a:link,.recycle_a:visited {
+    color: #5690D2;
+}

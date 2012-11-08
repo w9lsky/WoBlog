@@ -88,7 +88,7 @@ function deleteObj(obj) {
                 afterDelObj(data);
             },
             complete:function(jqXHR, textStatus) {
-                $('.delete_term').attr('disabled', false);
+                $('.applyBtn').attr('disabled', false);
             }
         });
 }
@@ -103,7 +103,6 @@ function recycleObj(obj) {
     } else {
         objArray.push(obj);
         $(' table tr[id=' + obj + ']').css('background-color', 'red');
-
     }
     alert("recycleObj:" + objArray);
 }

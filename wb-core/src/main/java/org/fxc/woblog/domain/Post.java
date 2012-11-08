@@ -27,7 +27,7 @@ public class Post extends BaseModel
     /**
      * 发布时间
      */
-    @Column(columnDefinition="DATE")
+    @Column(columnDefinition="DATE default sysdate")
     private Date createDate;
     /**
      * 正文
@@ -94,7 +94,7 @@ public class Post extends BaseModel
     /**
      * 评论总数
      */
-    private int commentCount;
+    private int commentCount = 0;
 
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
     @JoinColumn(name = "postId")
@@ -102,7 +102,7 @@ public class Post extends BaseModel
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "postId")
-    private Set<PostComment> postComments = new HashSet<PostComment>();
+    private Set<Comment> comments = new HashSet<Comment>();
 
     public void addPostTerm(PostTerm postTerm){
         postTerms.add(postTerm);
@@ -116,12 +116,12 @@ public class Post extends BaseModel
         this.postTerms = postTerms;
     }
 
-    public Set<PostComment> getPostComments() {
-        return postComments;
+    public Set<Comment> getComments() {
+        return comments;
     }
 
-    public void setPostComments(Set<PostComment> postComments) {
-        this.postComments = postComments;
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getAuthor() {

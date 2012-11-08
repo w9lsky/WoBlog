@@ -19,18 +19,18 @@ $(document).ready(function() {
         $('#name_error').html('');
         $('#mail_error').html('');
          $('#content_error').html('');
-        if(comment.name=="" || comment.name.length>15){
+        if(comment.authorName=="" || comment.authorName.length>15){
             $('#name_error').html("not valid name");
             return;
         }
 
         var mailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-        if (!mailReg.test(comment.mail)) {
+        if (!mailReg.test(comment.authorMail)) {
             $('#mail_error').html("not valid mail");
             return;
         }
 
-        if (comment.content == "" || comment.name.length > 140) {
+        if (comment.content == "" || comment.content.length > 140) {
             $('#content_error').html("not valid content");
             return;
         }
@@ -43,13 +43,13 @@ $(document).ready(function() {
 
         // start ajax
         $.ajax({
-            url : 'addComment?postId=' + $('#post_id').val(),
+            url : 'wb_admin/addComment',
             type : 'post',
             contentType : 'application/json',
             data : commentJSON,
             dataType : 'json',
             success:function(data, htmlStatus, jqXHR) {
-                afteAddComment(data, category, textStatus, jqXHR);
+                afteAddComment(data);
             },
             error : function(jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
@@ -60,5 +60,11 @@ $(document).ready(function() {
         });
 
     });
+
+    function afteAddComment(data){
+        $('.show_msg').append(data.jsonResult.message);
+        $('.show_msg').show('slow');
+        $('#reset_comment').click();
+    }
 
 });

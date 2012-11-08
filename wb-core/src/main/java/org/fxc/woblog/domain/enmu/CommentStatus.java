@@ -8,5 +8,5 @@ package org.fxc.woblog.domain.enmu;
 
 public enum CommentStatus
 {
-  OPEN,CLOSED
+    REJECT,APPROVED,SPAM,RECYCLE
 }

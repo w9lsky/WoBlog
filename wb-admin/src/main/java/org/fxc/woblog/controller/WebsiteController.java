@@ -1,8 +1,9 @@
 package org.fxc.woblog.controller;
 
-import org.fxc.woblog.Constants;
+import org.fxc.woblog.domain.Comment;
 import org.fxc.woblog.domain.Post;
 import org.fxc.woblog.domain.PostTerm;
+import org.fxc.woblog.services.CommentService;
 import org.fxc.woblog.services.PostService;
 import org.fxc.woblog.services.PostTermService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class WebsiteController {
     @Autowired
     private PostTermService postTermService;
 
+    @Autowired
+    private CommentService commentService;
+
     /**
      * @param modelAndView
      * @param catId        菜单ID，在菜单功能未添加前适用分类目录ID代替
@@ -48,7 +52,8 @@ public class WebsiteController {
                                 @RequestParam(value = "tag", required = false) String tagId,
                                 @RequestParam(value = "post", required = false) String postId,
                                 @RequestParam(value = "page", required = false) String pageId,
-                                @RequestParam(value = "pageIndex", required = false, defaultValue = "1") Long pageIndex) {
+                                @RequestParam(value = "pageIndex", required = false, defaultValue = "1") Long pageIndex,
+                                @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
         // the value is from database or cache.
         boolean hasBefore = false;
 
@@ -57,8 +62,11 @@ public class WebsiteController {
             Post post = postService.findPost(Long.parseLong(postId == null ? pageId : postId));
             if (post == null) {
                 modelAndView.setViewName("notFound");
-            } else {
+                return modelAndView;
             }
+            Page<Comment> commentPage = commentService.listComment(Long.parseLong(postId == null ? pageId : postId), 0, 5);
+            modelAndView.addObject("CommentPage", commentPage);
+
             Post nextPost = postService.findNext(post);
             modelAndView.addObject("NextPost", nextPost);
 
@@ -81,7 +89,7 @@ public class WebsiteController {
                 searchId = Long.parseLong(catId);
                 url = "cat=" + catId;
             }
-            Page<PostTerm> postTermPage = postTermService.listPostByTermId(searchId, pageIndex.intValue() == 0 ? 0 : pageIndex.intValue() - 1, 5);
+            Page<PostTerm> postTermPage = postTermService.listPostByTermId(searchId, pageIndex.intValue() == 0 ? 0 : pageIndex.intValue() - 1, pageSize);
             if (postTermPage.getTotalElements() == 0) {
                 modelAndView.setViewName("notFound");
             } else {
@@ -107,7 +115,7 @@ public class WebsiteController {
         if (hasBefore) {
             modelAndView.setViewName("index");
         } else {
-            Page<Post> postPage = postService.listPost(pageIndex.intValue() == 0 ? 0 : pageIndex.intValue() - 1, 5);
+            Page<Post> postPage = postService.listPost(pageIndex.intValue() == 0 ? 0 : pageIndex.intValue() - 1, pageSize);
             if (postPage.getTotalElements() == 0) {
                 modelAndView.setViewName("notFound");
             } else {

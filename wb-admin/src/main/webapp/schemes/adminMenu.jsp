@@ -24,6 +24,12 @@
 			<p><a href="#">所有页面</a></p>
 			<p><a href="#">新建页面</a></p>
 	</div>
+    <h3>
+		<a href="#">评论</a>
+	</h3>
+	<div>
+			<p><a href="${admin_url}/listComment">评论管理</a></p>
+	</div>
 	<h3>
 		<a href="#">外观</a>
 	</h3>

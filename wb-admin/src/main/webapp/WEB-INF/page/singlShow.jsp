@@ -57,17 +57,32 @@
         </c:forEach>
         </span>
     </div>
+    <div class="comment_list_div">
+        <c:if test="${CommentPage.totalElements!=0}">
+            <c:forEach var="comment" items="${CommentPage.content}">
+                <c:if test="${comment.commentStatus=='APPROVED'}">
+                    <p>${comment.authorName}&nbsp;在&nbsp;<fmt:formatDate value="${comment.createDate}"
+                                                                           type="date" dateStyle="full"/>&nbsp;说:</p>
+
+                    <div>${comment.content}</div>
+                </c:if>
+            </c:forEach>
+        </c:if>
+    </div>
     <div class="comment_div">
         <hr>
+        <div class="show_msg"></div>
         <form id="comment_form" method="post">
-            <p>姓名：<input type="text" id="name" name="name"><span class="required_flag">*</span><span id="name_error" class="error_message"></span></p>
-            <p>邮箱：<input type="text" id="mail" name="mail"><span class="required_flag">*</span><span id="mail_error" class="error_message"></span></p>
-            <p>网址：<input type="text" id="url" name="url"><span id="url_error" class="error_message"></span></p>
+            <input type="hidden" name="postId" value="${obj.id}">
+            <p>姓名：<input type="text" id="name" name="authorName"><span class="required_flag">*</span><span id="name_error" class="error_message"></span></p>
+            <p>邮箱：<input type="text" id="mail" name="authorMail"><span class="required_flag">*</span><span id="mail_error" class="error_message"></span></p>
+            <p>网址：<input type="text" id="url" name="authorUrl"><span id="url_error" class="error_message"></span></p>
             <span id="content_error" class="error_message"></span>
             <p><textarea id="content" name="content" wrap="virtual"></textarea></p>
             <p>
-                <button type="reset">重置</button>
-                <input type="button" id="submit_comment"value="提交"/></p>
+                <button type="reset" id="reset_comment">重置</button>
+                <input type="button" id="submit_comment"value="提交"/>
+            </p>
         </form>
     </div>
 </div>
