@@ -6,6 +6,7 @@
  */
 package org.fxc.woblog.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.fxc.woblog.domain.enmu.CommentStatus;
 import org.fxc.woblog.domain.enmu.PingStatus;
 import org.fxc.woblog.domain.enmu.PostStatus;
@@ -96,10 +97,12 @@ public class Post extends BaseModel
      */
     private int commentCount = 0;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
     @JoinColumn(name = "postId")
     private Set<PostTerm> postTerms = new HashSet<PostTerm>();
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "postId")
     private Set<Comment> comments = new HashSet<Comment>();

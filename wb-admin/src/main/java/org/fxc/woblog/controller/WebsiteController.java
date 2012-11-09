@@ -1,8 +1,7 @@
 package org.fxc.woblog.controller;
 
-import org.fxc.woblog.domain.Comment;
-import org.fxc.woblog.domain.Post;
-import org.fxc.woblog.domain.PostTerm;
+import org.fxc.woblog.Constants;
+import org.fxc.woblog.domain.*;
 import org.fxc.woblog.services.CommentService;
 import org.fxc.woblog.services.PostService;
 import org.fxc.woblog.services.PostTermService;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -124,5 +124,12 @@ public class WebsiteController {
             }
         }
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "ajaxListPost")
+    public JsonResult listTerm(ComplexJsonResult<Post> jsonResult) {
+        jsonResult.setSuccessList(postService.listPost(Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE).getContent());
+        return jsonResult;
     }
 }

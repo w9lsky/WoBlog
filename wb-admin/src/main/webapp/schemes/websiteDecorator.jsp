@@ -60,8 +60,8 @@
             <p>近期文章</p>
             <div id="nav_post_div">
                 <ul>
-                    <li><a href="javascript:void(0)">近期文章</a></li>
-                    <li><a href="javascript:void(0)">近期文章</a></li>
+                    <%--<li><a href="javascript:void(0)">近期文章</a></li>--%>
+                    <%--<li><a href="javascript:void(0)">近期文章</a></li>--%>
                 </ul>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <p>近期评论</p>
             <div id="nav_comment_div">
                 <ul>
-                    <li><a href="javascript:void(0)">近期评论</a></li>
+                    <li><a href="javascript:void(0)" title="">近期评论</a></li>
                     <li><a href="javascript:void(0)">近期评论</a></li>
                 </ul>
             </div>
@@ -80,5 +80,6 @@
 
     </div>
 </div>
+<script type="text/javascript" src="js\decorator\websiteDecorator.js"></script>
 </body>
 </html>
