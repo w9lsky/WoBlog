@@ -4,7 +4,7 @@
 		<a href="#">仪表盘</a>
 	</h3>
 	<div>
-			<p><a href="#">首页</a></p>
+			<p><a href="${admin_url}/admin">首页</a></p>
 			<p><a href="#">更新</a></p>			
 	</div>
 	<h3>

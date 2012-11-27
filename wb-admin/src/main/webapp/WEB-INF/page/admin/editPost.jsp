@@ -10,6 +10,7 @@
 <div class="title">
     <h2>撰写新文章</h2>
     <form:form action="${admin_url}/savePost/" modelAttribute="post" method="post">
+        <div class="post">
         <div class=col_left>
             <p>
                 <form:hidden path="id"/>
@@ -80,11 +81,12 @@
                 </div>
             </div>
         </div>
+            </div>
     </form:form>
 </div>
 <script type="text/javascript" src="js/editPost.js"></script>
 <script type="text/javascript" src="js/kindeditor/kindeditor.js"></script>
-<link rel="stylesheet" href="css/admin/post.css">
+<link rel="stylesheet" href="css/admin/editPost.css">
 <link rel="stylesheet" href="css/admin/wbox.css">
 </body>
 </html>
