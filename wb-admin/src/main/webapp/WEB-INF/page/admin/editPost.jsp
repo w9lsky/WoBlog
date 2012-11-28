@@ -7,11 +7,10 @@
 <title>撰写新文章</title>
 </head>
 <body>
-<div class="title">
     <h2>撰写新文章</h2>
     <form:form action="${admin_url}/savePost/" modelAttribute="post" method="post">
         <div class="post">
-        <div class=col_left>
+            <div class=col_left>
             <p>
                 <form:hidden path="id"/>
                 <c:if test="${createDate!=null}">
@@ -29,7 +28,7 @@
                 <span style="color:red;"><form:errors path="content"/></span>
             </p>
         </div>
-        <div class="col_right">
+            <div class="col_right">
             <div class="postbox">
                 <div class="handlediv" title="点击以切换"><br></div>
                 <p class="handlep">发布</p>
@@ -81,9 +80,8 @@
                 </div>
             </div>
         </div>
-            </div>
+        </div>
     </form:form>
-</div>
 <script type="text/javascript" src="js/editPost.js"></script>
 <script type="text/javascript" src="js/kindeditor/kindeditor.js"></script>
 <link rel="stylesheet" href="css/admin/editPost.css">
