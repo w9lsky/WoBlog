@@ -2,9 +2,11 @@ package org.fxc.woblog.controller;
 
 import org.fxc.woblog.Constants;
 import org.fxc.woblog.domain.*;
+import org.fxc.woblog.domain.enmu.CommentStatus;
 import org.fxc.woblog.services.CommentService;
 import org.fxc.woblog.services.PostService;
 import org.fxc.woblog.services.PostTermService;
+import org.fxc.woblog.services.TermService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -37,6 +39,9 @@ public class WebsiteController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private TermService termService;
 
     /**
      * @param modelAndView
@@ -130,6 +135,20 @@ public class WebsiteController {
     @RequestMapping(value = "ajaxListPost")
     public JsonResult listTerm(ComplexJsonResult<Post> jsonResult) {
         jsonResult.setSuccessList(postService.listPost(Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE).getContent());
+        return jsonResult;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "ajaxListTag")
+    public JsonResult listTag(ComplexJsonResult<Term> jsonResult) {
+        jsonResult.setSuccessList(termService.listTerm());
+        return jsonResult;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "ajaxListComment")
+    public JsonResult listComment(ComplexJsonResult<Comment> jsonResult) {
+        jsonResult.setSuccessList(commentService.listComment(CommentStatus.APPROVED, Constants.DEFAULT_PAGE_INDEX, Constants.DEFAULT_PAGE_SIZE).getContent());
         return jsonResult;
     }
 }

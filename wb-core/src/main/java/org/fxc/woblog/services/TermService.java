@@ -50,6 +50,11 @@ public class TermService {
     }
 
     @Transactional
+    public List<Term> listTerm() {
+        return termDao.findAll(new Sort(Constants.ID));
+    }
+
+    @Transactional
     public Term save(Term term) {
         return termDao.saveAndFlush(term);
     }

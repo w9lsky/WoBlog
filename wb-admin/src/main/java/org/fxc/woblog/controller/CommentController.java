@@ -29,6 +29,7 @@ public class CommentController  extends AdminBaseCotroller{
 
     @Autowired
     private CommentService commentService;
+    
 
     @RequestMapping(value = "addComment", method = RequestMethod.POST)
     public JsonResult addComment(@RequestBody Comment comment) {

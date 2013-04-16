@@ -9,10 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/";
 %>
+<!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <base href="<%=basePath %>">
     <title><sitemesh:write property='title'/></title>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -24,7 +26,7 @@
 <body>
 <div id="main_div">
     <div id="top_div">
-        <h1>赋新词</h1>
+        <h1>赋新词<%=basePath %></h1>
 
         <p>一个技术宅的私人领地 欢迎骚扰^^</p>
         <a href="wb_admin/admin">跳转到后台</a>
@@ -49,10 +51,8 @@
         <div class="nav_div">
             <p>标签</p>
             <div id="nav_tag_div">
-                <ul>
-                    <li><a href="javascript:void(0)">标签1</a></li>
-                    <li><a href="javascript:void(0)">标签2</a></li>
-                </ul>
+                <%--<a href="javascript:void(0)">标签1</a>,--%>
+                <%--<a href="javascript:void(0)">标签2</a>--%>
             </div>
         </div>
 
@@ -69,10 +69,10 @@
         <div class="nav_div">
             <p>近期评论</p>
             <div id="nav_comment_div">
-                <ul>
-                    <li><a href="javascript:void(0)" title="">近期评论</a></li>
-                    <li><a href="javascript:void(0)">近期评论</a></li>
-                </ul>
+                <%--<ul>--%>
+                    <%--<li><a href="javascript:void(0)" title="">近期评论</a></li>--%>
+                    <%--<li><a href="javascript:void(0)">近期评论</a></li>--%>
+                <%--</ul>--%>
             </div>
         </div>
     </div>
